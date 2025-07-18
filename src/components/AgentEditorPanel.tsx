@@ -24,11 +24,11 @@ export default function AgentEditorPanel({
     loadedAgent,
     onSaved,
 }: AgentEditorPanelProps) {
-    const [agentName, setAgentName] = useState<string>(loadedAgent?.name || '')
+    const [agentName, setAgentName] = useState<string>(loadedAgent?.agent_name || '')
     const [loading, setLoading] = useState<boolean>(false)
 
     useEffect(() => {
-        setAgentName(loadedAgent?.name || '')
+        setAgentName(loadedAgent?.agent_name || '')
     }, [loadedAgent])
 
     const handleSubmit = async () => {
@@ -65,7 +65,7 @@ export default function AgentEditorPanel({
 
             const savedAgent: Agent = {
                 id: loadedAgent?.id ?? Date.now(), // ideally from backend
-                name: agentName,
+                agent_name: agentName,
                 workflow,
             }
 
